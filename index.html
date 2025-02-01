@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kar Yağışı</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black; /* Arka plan siyah */
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+        .image {
+            position: absolute;
+            top: 10%; /* Resmi daha da yukarı taşı */
+            left: 50%; /* Yatayda ortala */
+            transform: translateX(-50%); /* Tam olarak ortala */
+            width: 70%; /* Resmin genişliği artırıldı */
+            max-width: 800px; /* Maksimum genişlik artırıldı */
+        }
+        .image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .snow {
+            position: absolute;
+            top: -10px;
+            width: 5px;
+            height: 5px;
+            background-color: white;
+            border-radius: 50%;
+            animation: snowfall linear infinite;
+        }
+        .bottom-image {
+            position: absolute;
+            bottom: 20%; /* Resmi biraz daha yukarı taşı */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px; /* Resmin boyutunu küçült */
+            cursor: pointer; /* Tıklanabilir olduğunu belirt */
+        }
+        .bottom-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        @keyframes snowfall {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+    </style>
+</head>
+<body>
+    <div class="image">
+        <img src="https://r.resimlink.com/fPpHC0u-T.png" alt="Resim">
+    </div>
+    <div class="bottom-image" onclick="window.location.href='https://t.me/+447386516835'">
+        <img src="https://r.resimlink.com/62EzPuDNK.png" alt="Alt Resim">
+    </div>
+    <script>
+        function createSnow() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snow');
+            snowflake.style.left = Math.random() * window.innerWidth + 'px';
+            snowflake.style.animationDuration = Math.random() * 5 + 5 + 's'; // Daha yavaş düşme
+            document.body.appendChild(snowflake);
+            setTimeout(() => {
+                snowflake.remove();
+            }, 10000); // Kar taneleri 10 saniye sonra kaldırılır
+        }
+        setInterval(createSnow, 500); // Her 500 ms'de bir yeni kar tanesi
+    </script>
+</body>
+</html>
